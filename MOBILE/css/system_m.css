@@ -1,0 +1,64 @@
+@charset "utf-8"; 
+/*reset*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input,textarea, select, button { margin: 0; padding: 0; border: 0; vertical-align: top; box-sizing:border-box; outline:none; -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-tap-highlight-color:transparent;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+img {border:0 none; vertical-align:top;}
+dl, ul, ol, menu, li {list-style:none}
+body {-webkit-text-size-adjust:none}
+button{background:transparent; border:none; outline:none;}
+a {color:#333; text-decoration:none}
+a:active, a:hover {text-decoration:none}
+address, caption, cite, code, dfn, em, var, i {font-style:normal; font-weight: normal}
+h1, h2, h3, h4, h5, h6{font-weight:normal; font-style:normal; }
+
+/*layout*/
+:root{
+	--speed : 0.3s;
+	--speed2 : 0.3s;
+	--ease :cubic-bezier(0.77,0,0.175,1);
+}
+html, body{width:100%; height:100%;}
+body{background:#fff; min-width:320px;}
+#wrap{width:100%; height:100%; }
+#wrap .imgW100{width:100%; height:auto; vertical-align:top;}
+#intro{position:relative; left:0; top:0; width:100%; height:100%; z-index:2; background:#180e13 url('../img/intro-bg.png') no-repeat left top; background-size:cover; overflow:hidden;}
+#intro img{position:absolute; top:0; width:100%; left:0;}
+#intro .show01{z-index:1; }
+#intro .show02{z-index:2;}
+#intro .show03{z-index:3;  position:relative;}
+#intro .intro-inner{width:100%; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);}
+#container{position:relative; z-index:1; position:relative;}
+
+header{width:100%; position:absolute; left:0; top:0; height:54px; z-index:100;}
+header.fixed{position:fixed; left:0; top:0;}
+header .header-top{transition-delay: var(--speed); height:100%; position:relative; z-index:2;}
+header .header-top:before{content:''; display:inline-block; width:100%; height:100%; background:#fff; position:absolute; left:0; top:0; transition:all var(--speed) var(--ease); transform-origin:0 50%;}
+header h1{height:100%; padding-left:8.51%; position:absolute; left:0; top:0; transition:all var(--speed) var(--ease); margin:0; filter:invert(0);}
+header h1 img{height:100%; width:auto;}
+header .menu-btn{width:79px; height:54px; position:absolute; right:0; top:0; z-index:5; outline:0; cursor:pointer;}
+header .menu-btn .menu{display:inline-block; width:22px; height:100%; position:relative; line-height:9999px; overflow:hidden;}
+header .menu-btn .menu em{width:20px; height:2px; background:transparent; position:absolute; top:50%; left:0; margin-top:-1px; font-size:0; }
+header .menu-btn .menu em:before, 
+header .menu-btn .menu em:after{content:''; display:inline-block; width:100%; height:2px; background:#000; position:absolute; left:0; transform:rotate(0);  }
+header .menu-btn .menu em:before{top:4px; left:auto; right:0; transition:top 0.25s 0.25s, width 0.25s 0.25s, transform 0.25s;}
+header .menu-btn .menu em:after{bottom:4px; transition:bottom 0.25s 0.25s, transform 0.25s;}
+header .gnb{position:fixed; left:-100%; top:0; width:100%; height:100%; background:url('../img/gnb-bg.png') no-repeat left top; background-size:cover; z-index:1; transition:all var(--speed2) var(--ease) }
+header .gnb .gnb-util{position:absolute; left:0; bottom:0;}
+header .gnb .gnb-util img{width:100%;}
+header .gnb .gnb-inner{padding-top:54px;}
+header .gnb .gnb-inner img{width:100%; height:auto;}
+header .gnb .test-show{cursor:pointer;}
+
+/* gnb open */
+body.overhidden{overflow:hidden;}
+header.open .menu-btn .menu em:before{transform:rotate(45deg); top:0; width:100%;  transition:top 0.25s, transform 0.25s 0.25s  }
+header.open .menu-btn .menu em:after{transform:rotate(-45deg) ; bottom:0;  transition:top 0.25s, transform 0.25s 0.25s  }
+header.open .header-top:before{left:100%; transition-delay: 0s}
+header.open h1 img{filter:invert(100%);}
+header.open .menu-btn .menu em:before, 
+header.open .menu-btn .menu em:after{background:#fff;}
+header.open .gnb{left:0;}
+footer{position:relative;}
+footer button.go-top{width:50px; height:50px; position:absolute; top:9.2%; right:8.3%;}
+footer button.go-top img{width:100%; height:auto;}
+.content{padding-top:54px;}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SYSTEM</title>
+	<link rel="stylesheet" href="css/system.css">
+	<script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div id="wrap" style="overflow:auto; overflow-x:auto"><!--  -->
+		<div id="intro">
+			<video src="img/intro.mp4" muted autoplay= playsinline preload="metadata"> </video>
+		</div>
+		<div id="main-container">
+			<div class="main-content">
+				<div class="progress">
+					<span class="progress-bar"> </span>
+				</div>
+				<nav class="global-nav sticky" id="sticky-nav"> <!-- open추가  -->
+					<div class="close-menu">
+						<div class="inner">
+							<button type="button" class="menu-btn" id="sticky-btn"> 
+								<span class="ico">
+									<img src="img/btn-ico.png" alt="">
+								</span>
+								<img src="img/nav-logo.png" alt="">
+							</button>
+							<span class="menu-img"><img src="img/close-menu.png" alt=""></span>
+						</div>
+					</div> 
+					<div class="open-menu" id="sticky-menu">
+						<div class="inner-wrap">
+							<div class="inner">
+								<img src="img/open-menu01.png" alt="">
+								<ul class="menu-list">
+									<li>
+										<a href="#">
+											<strong>About</strong>
+  											<span>About</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" id="sticky-test-show">
+											<strong>Collections</strong>
+  											<span>Collections</span>
+										</a>
+										<div class="submenu">
+											<a href="#">21ss</a>
+											<a href="#">20fw</a>
+											<a href="#">20ss</a>
+										</div>
+									</li>
+									<li>
+										<a href="#">
+											<strong>Stockists</strong>
+  											<span>Stockists</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<img src="img/open-menu03.png" alt="" style="position:absolute; bottom:0">
+						</div>
+					</div>
+				</nav>
+				<div class="scroll-container">
+					<section class="main-visual">
+						<img src="img/main-visual.jpg" class="imgH100">
+					</section>
+					<section class="sec0">
+						<nav class="global-nav" id="global-nav"> <!-- open추가  -->
+							<div class="close-menu">
+								<div class="inner">
+									<button type="button" class="menu-btn" id="menu-btn">
+										<span class="ico">
+											<img src="img/btn-ico.png" alt="">
+										</span>
+										<img src="img/nav-logo.png" alt="">
+									</button>
+									<span class="menu-img"><img src="img/close-menu.png" alt=""></span>
+								</div>
+							</div>
+							<div class="open-menu" id="open-menu">
+								<div class="inner-wrap">
+									<div class="inner">
+										<img src="img/open-menu01.png" alt="">
+										<ul class="menu-list">
+											<li>
+												<a href="#">
+													<strong>About</strong>
+		  											<span>About</span>
+												</a>
+											</li>
+											<li>
+												<a href="#" id="test-show">
+													<strong>Collections</strong>
+		  											<span>Collections</span>
+												</a>
+												<div class="submenu">
+													<a href="#">21ss</a>
+													<a href="#">20fw</a>
+													<a href="#">20ss</a>
+												</div>
+											</li>
+											<li>
+												<a href="#">
+													<strong>Stockists</strong>
+		  											<span>Stockists</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<img src="img/open-menu03.png" alt="" style="position:absolute; bottom:0">
+								</div>
+							</div>
+						</nav>
+						<img src="img/main-sec00.jpg" class="imgH100">
+					</section>
+					<section class="sec1">
+						<img src="img/main-sec01.jpg" class="imgH100">
+					</section>
+					<section class="sec1-1">
+						<img src="img/main-sec01-01.jpg" class="imgH100">
+						<button type="button" class="sec1-btn motion-btn" id="view-more-btn">
+							<span class="motion-inner">
+								<img src="img/btn-txt01.png" alt="">
+								<img src="img/btn-txt01.png" alt="">
+							</span>
+						</button>
+					</section>
+					<section class="sec2">
+						<img src="img/main-sec02.jpg" class="imgH100">
+					</section>
+					<section class="sec3">
+						<img src="img/main-sec03.jpg" class="imgH100">
+						<button type="button" class="sec3-btn motion-btn" id="go-main-btn">
+							<span class="motion-inner">
+								<img src="img/btn-txt02.png" alt="">
+								<img src="img/btn-txt02.png" alt="">
+							</span>
+						</button>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</div>
+</body>
+<script src="js/scroll.js"></script> 
+<script>
+	$('#menu-btn').on('click', function(e){
+		e.preventDefault()
+		$('#global-nav').toggleClass('open'); 
+	}); 
+
+	$('#test-show').on('click', function(e){
+		e.preventDefault()
+	 	$(this).parent().toggleClass('on'); 
+	})
+
+	$('#sticky-btn').on('click', function(e){
+		e.preventDefault()
+		$('#sticky-nav').toggleClass('open'); 
+	})
+
+	$('#sticky-test-show').on('click', function(e){
+		e.preventDefault()
+	 	$(this).parent().toggleClass('on'); 
+	}); 
+
+	$('#intro video').on('ended', function(){
+		$('.dim').addClass('show'); 
+	}); 
+
+	$('.dim').on('transitionend', function introEnd(){
+		$('#main-container').addClass('show'); 
+		$('#intro').remove(); 
+	}); 
+
+	$('#main-container').on('transitionend', function(){
+		$('.dim').removeClass('show'); 
+	})
+
+	$('#view-more-btn').on('click', function(e){
+		location.href = "sub.html";
+	}); 
+</script>
+</html>
